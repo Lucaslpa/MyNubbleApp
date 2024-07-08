@@ -6,7 +6,13 @@ import {ButtonProps} from './types';
 import {buttonThemes} from './theme';
 import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
-export function Button({loading, text, buttonType, disabled}: ButtonProps) {
+export function Button({
+  loading,
+  text,
+  buttonType,
+  disabled,
+  ...props
+}: ButtonProps) {
   const buttonTheme =
     buttonThemes[buttonType][disabled ? 'disabled' : 'default'];
   return (
@@ -19,7 +25,8 @@ export function Button({loading, text, buttonType, disabled}: ButtonProps) {
       borderRadius="s16"
       backgroundColor={buttonTheme.background}
       borderWidth={buttonTheme.borderWidth}
-      borderColor={buttonTheme.borderColor}>
+      borderColor={buttonTheme.borderColor}
+      {...props}>
       {!loading ? (
         <Text type="headingMedium" color={buttonTheme.backgroundContrast}>
           {text}

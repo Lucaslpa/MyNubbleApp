@@ -70,3 +70,5 @@ const IconRegistry = {
   settings: SettingsIcon,
   trash: TrashIcon,
 };
+
+export type IconName = keyof typeof IconRegistry;
