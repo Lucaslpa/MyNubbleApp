@@ -28,16 +28,32 @@ import {ProfileFillIcon} from '../../assets/icons/ProfileFillIcon';
 import {SearchIcon} from '../../assets/icons/SearchIcon';
 import {SettingsIcon} from '../../assets/icons/SettingsIcon';
 import {TrashIcon} from '../../assets/icons/TrashIcon';
+import {Pressable} from 'react-native';
 
 interface Props {
   name: keyof typeof IconRegistry;
   size?: number;
   color?: Colors;
+  onPress?: () => void;
 }
 
-export function Icon({name, size, color = 'backgroundContrast'}: Props) {
+export function Icon({
+  name,
+  size,
+  color = 'backgroundContrast',
+  onPress,
+}: Props) {
   const colors = useAppTheme().colors;
   const SVGIcon = IconRegistry[name];
+
+  if (onPress) {
+    return (
+      <Pressable hitSlop={10} onPress={onPress}>
+        <SVGIcon size={size} color={colors[color]} />
+      </Pressable>
+    );
+  }
+
   return <SVGIcon size={size} color={colors[color]} />;
 }
 

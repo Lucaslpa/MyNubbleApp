@@ -9,7 +9,7 @@ import {Box, BoxProps} from './Box';
 import {$fontFamily, $fontSizes, Text} from './Text';
 import {useAppTheme} from '../hooks/useTheme';
 
-interface Props extends RNTextInputProps {
+export interface TextInputProps extends RNTextInputProps {
   label: string;
   errorMessage?: string;
   rightComponent?: React.ReactElement;
@@ -22,7 +22,7 @@ export function TextInput({
   boxProps,
   rightComponent,
   ...rest
-}: Props) {
+}: TextInputProps) {
   const theme = useAppTheme();
   const inputRef = React.useRef<RNTextInput>(null);
 

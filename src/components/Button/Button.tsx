@@ -11,6 +11,7 @@ export function Button({
   text,
   buttonType,
   disabled,
+  onPress,
   ...props
 }: ButtonProps) {
   const buttonTheme =
@@ -26,6 +27,7 @@ export function Button({
       backgroundColor={buttonTheme.background}
       borderWidth={buttonTheme.borderWidth}
       borderColor={buttonTheme.borderColor}
+      onPress={onPress}
       {...props}>
       {!loading ? (
         <Text type="headingMedium" color={buttonTheme.backgroundContrast}>

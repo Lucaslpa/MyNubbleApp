@@ -19,4 +19,5 @@ export interface ButtonProps extends TouchableOpacityBoxProps {
   text: string;
   buttonType: ButtonTypes;
   disabled?: boolean;
+  onPress?: () => void;
 }
