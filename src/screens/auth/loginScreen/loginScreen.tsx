@@ -6,6 +6,7 @@ import {Icon} from '../../../components/Icon/Icon';
 import {Screen} from '../../../components/Screen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/routes';
+import {TouchableOpacity} from 'react-native';
 
 type LoginScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -15,6 +16,10 @@ type LoginScreenProps = NativeStackScreenProps<
 export function LoginScreen({navigation}: LoginScreenProps) {
   function navigateToSignUp() {
     navigation.navigate('SignUpScreen');
+  }
+
+  function navigateToForgetPassword() {
+    navigation.navigate('ForgetPasswordScreen');
   }
 
   return (
@@ -28,7 +33,6 @@ export function LoginScreen({navigation}: LoginScreenProps) {
 
       <TextInput
         boxProps={{mb: 's14'}}
-        errorMessage="Senha incorreta"
         placeholder="Digite seu e-mail"
         label="E-mail"
       />
@@ -36,14 +40,15 @@ export function LoginScreen({navigation}: LoginScreenProps) {
       <TextInput
         label="Senha"
         placeholder="Digite sua senha"
-        errorMessage="Senha incorreta"
         boxProps={{mb: 's10'}}
         rightComponent={<Icon name="eyeOff" size={22} color="gray2" />}
       />
 
-      <Text color="primary" type="paragraphSmall" bold mb="s40">
-        Esqueci minha senha
-      </Text>
+      <TouchableOpacity onPress={navigateToForgetPassword}>
+        <Text color="primary" type="paragraphSmall" bold mb="s40">
+          Esqueci minha senha
+        </Text>
+      </TouchableOpacity>
 
       <Button marginTop="s32" text="Entrar" buttonType="primary" />
       <Button

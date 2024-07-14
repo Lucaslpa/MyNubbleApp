@@ -6,19 +6,23 @@ import {Button} from '../../../components/Button/Button';
 import {PasswordInput} from '../../../components/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/routes';
+import {useResetSuccessScreen} from '../../../hooks/useResetSuccessScree';
 
 type SignUpScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  'LoginScreen'
+  'SignUpScreen'
 >;
+
 export function SignUpScreen({navigation}: SignUpScreenProps) {
+  const reset = useResetSuccessScreen({
+    title: 'Conta criada',
+    description:
+      'Sua conta foi criada com sucesso. Agora você pode fazer login.',
+    icon: {name: 'checkRound', color: 'success'},
+  });
+
   function submitForm() {
-    navigation.navigate('SuccessScreen', {
-      title: 'Conta criada',
-      description:
-        'Sua conta foi criada com sucesso. Agora você pode fazer login.',
-      icon: {name: 'checkRound', color: 'success'},
-    });
+    reset();
   }
 
   return (
@@ -26,17 +30,16 @@ export function SignUpScreen({navigation}: SignUpScreenProps) {
       <Text type="headingLarge" mb="s32">
         Criar uma conta
       </Text>
-      <TextInput label="Seu username" placeholder="@" boxProps={{mb: 's16'}} />
+      <TextInput label="Seu username" placeholder="@" boxProps={{mb: 's14'}} />
       <TextInput
         label="Nome Completo"
         placeholder="Digite seu nome completo"
-        boxProps={{mb: 's16'}}
+        boxProps={{mb: 's14'}}
       />
       <TextInput
         label="E-mail"
         placeholder="Digite seu e-mail"
-        errorMessage="E-mail inválido"
-        boxProps={{mb: 's16'}}
+        boxProps={{mb: 's14'}}
       />
       <PasswordInput
         label="Senha"
