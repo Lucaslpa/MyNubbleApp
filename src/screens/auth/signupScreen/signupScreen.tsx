@@ -4,10 +4,21 @@ import {Text} from '../../../components/Text';
 import {TextInput} from '../../../components/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {PasswordInput} from '../../../components/PasswordInput';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../routes/routes';
 
-export function SignUpScreen() {
+type SignUpScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'LoginScreen'
+>;
+export function SignUpScreen({navigation}: SignUpScreenProps) {
   function submitForm() {
-    // TODO: implementar
+    navigation.navigate('SuccessScreen', {
+      title: 'Conta criada',
+      description:
+        'Sua conta foi criada com sucesso. Agora você pode fazer login.',
+      icon: {name: 'checkRound', color: 'success'},
+    });
   }
 
   return (

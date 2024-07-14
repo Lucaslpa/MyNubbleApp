@@ -12,7 +12,7 @@ const palette = {
   gray4: '#E1E1E1',
   gray5: '#F5F5F5',
   white: '#FFFFFF',
-  succes: '#4ABC86',
+  success: '#4ABC86',
   successLight: '#D8FFEC',
   error: '#EA3838',
   errorLight: '#FBECEC',
