@@ -39,7 +39,7 @@ export function TextInput({
         <Box
           borderRadius="s12"
           mt="s4"
-          borderWidth={errorMessage ? 2 : 1}
+          borderWidth={2}
           borderColor={errorMessage ? 'error' : 'gray4'}
           flexDirection="row"
           padding="s16"
@@ -55,9 +55,11 @@ export function TextInput({
           />
           {rightComponent && <Box ml="s8">{rightComponent}</Box>}
         </Box>
-        <Text type="paragraphSmall" bold color="error" mt="s8">
-          {errorMessage}
-        </Text>
+        <Box height={25} mt="s8">
+          <Text type="paragraphSmall" bold color="error">
+            {errorMessage}
+          </Text>
+        </Box>
       </Pressable>
     </Box>
   );
