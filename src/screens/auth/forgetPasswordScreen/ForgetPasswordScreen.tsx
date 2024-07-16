@@ -5,6 +5,13 @@ import {Text} from '../../../components/Text';
 import {TextInput} from '../../../components/TextInput';
 import {RootStackParamList} from '../../../routes/routes';
 import {useResetSuccessScreen} from '../../../hooks/useResetSuccessScree';
+import {
+  ForgetPasswordForm,
+  ForgetPasswordFormSchema,
+} from './forgetPasswordFormSchema';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {FormTextInput} from '../../../components/Form/FormTextInput';
 
 type ForgetPasswordScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -12,6 +19,18 @@ type ForgetPasswordScreenProps = NativeStackScreenProps<
 >;
 
 export function ForgetPasswordScreen({navigation}: ForgetPasswordScreenProps) {
+  const {
+    control,
+    formState: {isValid},
+    handleSubmit,
+  } = useForm<ForgetPasswordForm>({
+    resolver: zodResolver(ForgetPasswordFormSchema),
+    defaultValues: {
+      email: '',
+    },
+    mode: 'onChange',
+  });
+
   const reset = useResetSuccessScreen({
     title: 'Enviamos as\ninstruções para seu\ne-mail',
     description:
@@ -23,6 +42,8 @@ export function ForgetPasswordScreen({navigation}: ForgetPasswordScreenProps) {
     reset();
   }
 
+  const onSubmit = (data: ForgetPasswordForm) => {};
+
   return (
     <Screen canGoBack>
       <Text type="headingLarge" mb="s16" color="backgroundContrast">
@@ -31,16 +52,19 @@ export function ForgetPasswordScreen({navigation}: ForgetPasswordScreenProps) {
       <Text type="paragraphLarge" mb="s32" color="backgroundContrast">
         Digite seu e-mail e enviaremos as instruções para redefinição de senha
       </Text>
-      <TextInput
+      <FormTextInput
         label="E-mail"
         placeholder="Digite seu e-mail"
         keyboardType="email-address"
+        control={control}
+        name={'email'}
       />
       <Button
+        disabled={!isValid}
         text="Recuperar senha"
         buttonType="primary"
         mt="s48"
-        onPress={navigateToSuccessScreen}
+        onPress={handleSubmit(onSubmit)}
       />
     </Screen>
   );

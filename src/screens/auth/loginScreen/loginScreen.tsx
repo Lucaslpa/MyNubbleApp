@@ -8,6 +8,10 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/routes';
 import {TouchableOpacity} from 'react-native';
 import {Controller, useForm} from 'react-hook-form';
+import {FormTextInput} from '../../../components/Form/FormTextInput';
+import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {LoginForm, LoginFormSchema} from './loginFormSchema';
 
 type LoginScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -24,7 +28,8 @@ export function LoginScreen({navigation}: LoginScreenProps) {
     control,
     handleSubmit,
     formState: {isValid},
-  } = useForm<FormData>({
+  } = useForm<LoginForm>({
+    resolver: zodResolver(LoginFormSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -53,47 +58,18 @@ export function LoginScreen({navigation}: LoginScreenProps) {
         Digite seu e-mail e senha para entrar
       </Text>
 
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'E-mail é obrigatório',
-          },
-        }}
+      <FormTextInput
         name="email"
-        render={({field, fieldState}) => (
-          <TextInput
-            boxProps={{mb: 's14'}}
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-            placeholder="Digite seu e-mail"
-            label="E-mail"
-          />
-        )}
+        label="Email"
+        placeholder="Digite seu e-mail"
+        control={control}
       />
 
-      <Controller
-        control={control}
-        rules={{
-          minLength: {
-            value: 6,
-            message: 'A senha deve ter no mínimo 6 caracteres',
-          },
-        }}
+      <FormPasswordInput
         name="password"
-        render={({field, fieldState}) => (
-          <TextInput
-            label="Senha"
-            placeholder="Digite sua senha"
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-            boxProps={{mb: 's4'}}
-            rightComponent={<Icon name="eyeOff" size={22} color="gray2" />}
-          />
-        )}
+        label="Senha"
+        placeholder="Digite sua senha"
+        control={control}
       />
 
       <TouchableOpacity onPress={navigateToForgetPassword}>

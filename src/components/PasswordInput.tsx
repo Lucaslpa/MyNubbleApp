@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {TextInput, TextInputProps} from './TextInput';
 import {Icon} from './Icon/Icon';
 
-type PasswordInputProps = Omit<
+export type PasswordInputProps = Omit<
   TextInputProps,
   'rightComponent' | 'secureTextEntry'
 >;
@@ -12,7 +12,6 @@ export function PasswordInput(props: PasswordInputProps) {
 
   function toggleShowPassword() {
     setShowPassword(!showPassword);
-    console.log('showPassword', showPassword);
   }
 
   return (
@@ -28,7 +27,6 @@ export function PasswordInput(props: PasswordInputProps) {
           color="gray2"
         />
       }
-      boxProps={{mb: 's48'}}
     />
   );
 }

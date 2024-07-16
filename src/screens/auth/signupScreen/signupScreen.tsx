@@ -8,6 +8,10 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/routes';
 import {useResetSuccessScreen} from '../../../hooks/useResetSuccessScree';
 import {Controller, useForm} from 'react-hook-form';
+import {FormTextInput} from '../../../components/Form/FormTextInput';
+import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {SignUpForm, SignUpFormSchema} from './signUpFormSchema';
 
 type SignUpScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -26,7 +30,8 @@ export function SignUpScreen({navigation}: SignUpScreenProps) {
     control,
     handleSubmit,
     formState: {isValid},
-  } = useForm<FormData>({
+  } = useForm<SignUpForm>({
+    resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       username: '',
       name: '',
@@ -44,7 +49,6 @@ export function SignUpScreen({navigation}: SignUpScreenProps) {
   });
 
   function submitForm(data: FormData) {
-    console.log(data);
     reset();
   }
 
@@ -54,96 +58,33 @@ export function SignUpScreen({navigation}: SignUpScreenProps) {
         Criar uma conta
       </Text>
 
-      <Controller
-        control={control}
+      <FormTextInput
         name="username"
-        rules={{
-          required: {
-            value: true,
-            message: 'O username é obrigatório',
-          },
-        }}
-        render={({field, fieldState}) => (
-          <TextInput
-            label="Seu username"
-            placeholder="@"
-            boxProps={{mb: 's14'}}
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        label="Seu username"
+        placeholder="@"
+        control={control}
       />
 
-      <Controller
-        control={control}
+      <FormTextInput
         name="name"
-        rules={{
-          required: {
-            value: true,
-            message: 'O nome é obrigatório',
-          },
-        }}
-        render={({field, fieldState}) => (
-          <TextInput
-            label="Nome Completo"
-            placeholder="Digite seu nome completo"
-            boxProps={{mb: 's14'}}
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        label="Nome Completo"
+        placeholder="Digite seu nome completo"
+        control={control}
       />
 
-      <Controller
-        control={control}
+      <FormTextInput
         name="email"
-        rules={{
-          required: {
-            value: true,
-            message: 'O e-mail é obrigatório',
-          },
-          pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: 'E-mail inválido',
-          },
-        }}
-        render={({field, fieldState}) => (
-          <TextInput
-            label="E-mail"
-            placeholder="Digite seu e-mail"
-            boxProps={{mb: 's14'}}
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        control={control}
       />
 
-      <Controller
-        control={control}
-        rules={{
-          required: {
-            value: true,
-            message: 'A senha é obrigatória',
-          },
-          minLength: {
-            value: 6,
-            message: 'A senha deve ter no mínimo 6 caracteres',
-          },
-        }}
+      <FormPasswordInput
         name="password"
-        render={({field, fieldState}) => (
-          <PasswordInput
-            label="Senha"
-            placeholder="Digite sua senha"
-            boxProps={{mb: 's48'}}
-            onChangeText={field.onChange}
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
+        label="Senha"
+        placeholder="Digite sua senha"
+        control={control}
+        boxProps={{mb: 's56'}}
       />
 
       <Button
