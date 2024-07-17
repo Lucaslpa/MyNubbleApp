@@ -1,25 +1,19 @@
 import React from 'react';
-import {Box} from './Box';
-import {Text} from './Text';
-import {Icon} from './Icon/Icon';
-import {useAppSafeArea} from '../hooks/useAppSafeArea';
+import {Box, Text, Icon} from './';
+import {useAppSafeArea} from '@hooks';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../routes/routes';
 
 interface Props {
   children: React.ReactNode;
   canGoBack?: boolean;
 }
 
-type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
-
 export function Screen({children, canGoBack}: Props) {
   const {top, bottom} = useAppSafeArea();
 
-  const navigation = useNavigation<NavigationProps>();
+  const navigation = useNavigation();
 
   function navigateToLogin() {
     navigation.goBack();

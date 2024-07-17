@@ -2,7 +2,7 @@ import React from 'react';
 import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
 import {EyeOnIcon} from '../../assets/icons/EyeOnIcon';
 import {Colors} from '../../theme';
-import {useAppTheme} from '../../hooks/useTheme';
+import {useAppTheme} from '../../hooks/useAppTheme';
 import {ArrowLeftIcon} from '../../assets/icons/ArrowLeftIcon';
 import {BellIcon} from '../../assets/icons/BellIcon';
 import {ArrowRightIcon} from '../../assets/icons/ArrowRightIcon';
