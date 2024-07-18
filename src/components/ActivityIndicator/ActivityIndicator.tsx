@@ -3,8 +3,10 @@ import {
   ActivityIndicatorProps as RNActivityIndicatorProps,
   ActivityIndicator as RNActivityIndicator,
 } from 'react-native';
-import {Colors, Theme} from '../../theme';
+
 import {useTheme} from '@shopify/restyle';
+
+import {Colors, Theme} from '../../theme';
 
 interface Props extends Omit<RNActivityIndicatorProps, 'color'> {
   color: Colors;

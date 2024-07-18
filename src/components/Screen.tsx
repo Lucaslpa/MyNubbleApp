@@ -1,9 +1,12 @@
-import React from 'react';
-import {Box, Text, Icon} from './';
-import {useAppSafeArea} from '@hooks';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {useNavigation} from '@react-navigation/native';
+import React, {useTransition} from 'react';
 import {TouchableOpacity} from 'react-native';
+
+import {useNavigation} from '@react-navigation/native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+
+import {useAppSafeArea} from '@hooks';
+
+import {Box, Text, Icon} from './';
 
 interface Props {
   children: React.ReactNode;

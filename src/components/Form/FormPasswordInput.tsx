@@ -4,6 +4,7 @@ import {
   FieldPath,
   FieldValues,
 } from 'react-hook-form';
+
 import {PasswordInput, PasswordInputProps} from '../PasswordInput';
 
 type FormTypes<T extends FieldValues> = Pick<

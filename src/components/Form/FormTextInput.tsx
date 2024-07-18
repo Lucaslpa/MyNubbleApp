@@ -4,6 +4,7 @@ import {
   FieldPath,
   FieldValues,
 } from 'react-hook-form';
+
 import {TextInput, TextInputProps} from '../TextInput';
 
 type FormTypes<T extends FieldValues> = Pick<

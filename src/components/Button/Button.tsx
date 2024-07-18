@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text} from '../Text';
 
-import {TouchableOpacityBox} from '../TouchableOpacityBox';
-import {ButtonProps} from './types';
-import {buttonThemes} from './theme';
 import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
+import {Text} from '../Text';
+import {TouchableOpacityBox} from '../TouchableOpacityBox';
+
+import {buttonThemes} from './theme';
+import {ButtonProps} from './types';
 
 export function Button({
   loading,

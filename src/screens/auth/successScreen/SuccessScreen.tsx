@@ -1,6 +1,9 @@
-import React from 'react';
-import {Icon, Button, Screen, Text} from '@components';
+import React, {useEffect} from 'react';
+
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+import {Icon, Button, Screen, Text} from '@components';
+
 import {RootStackParamList} from '../../../routes/routes';
 
 type SuccessScreenProps = NativeStackScreenProps<
@@ -10,6 +13,11 @@ type SuccessScreenProps = NativeStackScreenProps<
 
 export function SuccessScreen({navigation, route}: SuccessScreenProps) {
   const title = route.params.title;
+
+  useEffect(() => {
+    console.log(title);
+  }, []);
+
   const description = route.params.description;
   const icon = route.params.icon;
 

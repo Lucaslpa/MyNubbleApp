@@ -1,8 +1,10 @@
 import React from 'react';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/routes';
 import {TouchableOpacity} from 'react-native';
+
+import {zodResolver} from '@hookform/resolvers/zod';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
+
 import {
   Button,
   Screen,
@@ -10,7 +12,9 @@ import {
   FormPasswordInput,
   Text,
 } from '@components';
-import {zodResolver} from '@hookform/resolvers/zod';
+
+import {RootStackParamList} from '../../../routes/routes';
+
 import {LoginForm, LoginFormSchema} from './loginFormSchema';
 
 type LoginScreenProps = NativeStackScreenProps<
