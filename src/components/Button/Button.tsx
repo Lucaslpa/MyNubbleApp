@@ -10,13 +10,12 @@ import {ButtonProps} from './types';
 export function Button({
   loading,
   text,
-  buttonType,
+  type,
   disabled,
   onPress,
   ...props
 }: ButtonProps) {
-  const buttonTheme =
-    buttonThemes[buttonType][disabled ? 'disabled' : 'default'];
+  const buttonTheme = buttonThemes[type][disabled ? 'disabled' : 'default'];
   return (
     <TouchableOpacityBox
       disabled={disabled || loading}

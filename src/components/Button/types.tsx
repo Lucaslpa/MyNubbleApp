@@ -17,7 +17,7 @@ export type ButtonTypes = 'primary' | 'outline';
 export interface ButtonProps extends TouchableOpacityBoxProps {
   loading?: boolean;
   text: string;
-  buttonType: ButtonTypes;
+  type: ButtonTypes;
   disabled?: boolean;
   onPress?: () => void;
 }

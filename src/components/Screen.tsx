@@ -1,4 +1,4 @@
-import React, {useTransition} from 'react';
+import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';

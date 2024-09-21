@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {zodResolver} from '@hookform/resolvers/zod';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
 
 import {
@@ -13,15 +12,11 @@ import {
 } from '@components';
 import {useResetSuccessScreen} from '@hooks';
 
-import {RootStackParamList} from '../../../routes/routes';
-
 import {SignUpForm, SignUpFormSchema} from './signUpFormSchema';
 
-type SignUpScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'SignUpScreen'
->;
+import {AuthScreenProps} from '@/routes/navigationTypes';
 
+type SignUpScreenProps = AuthScreenProps<'SignUpScreen'>;
 interface FormData {
   username: string;
   name: string;
@@ -95,7 +90,7 @@ export function SignUpScreen({navigation}: SignUpScreenProps) {
         disabled={!isValid}
         onPress={handleSubmit(submitForm)}
         text="Criar uma conta"
-        buttonType="primary"
+        type="primary"
       />
     </Screen>
   );

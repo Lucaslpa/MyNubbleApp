@@ -2,7 +2,6 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
 import {zodResolver} from '@hookform/resolvers/zod';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
 
 import {
@@ -13,14 +12,11 @@ import {
   Text,
 } from '@components';
 
-import {RootStackParamList} from '../../../routes/routes';
-
 import {LoginForm, LoginFormSchema} from './loginFormSchema';
 
-type LoginScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'LoginScreen'
->;
+import {AuthScreenProps} from '@/routes/navigationTypes';
+
+type LoginScreenProps = AuthScreenProps<'LoginScreen'>;
 
 interface FormData {
   email: string;
@@ -86,11 +82,11 @@ export function LoginScreen({navigation}: LoginScreenProps) {
         marginTop="s32"
         disabled={!isValid}
         text="Entrar"
-        buttonType="primary"
+        type="primary"
         onPress={handleSubmit(onSubmit)}
       />
       <Button
-        buttonType="outline"
+        type="outline"
         marginTop="s12"
         text="Criar uma conta"
         onPress={navigateToSignUp}
