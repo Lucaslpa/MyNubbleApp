@@ -4,3 +4,6 @@ export * from './auth/LoginScreen/LoginScreen';
 export * from './auth/forgetPasswordScreen/forgetPasswordScreen';
 export * from './auth/signupScreen/signupScreen';
 export * from './auth/successScreen/successScreen';
+export * from './app/MyProfileScreen/MyProfileScreen';
+export * from './app/NewPostScreen/NewPostScreen';
+export * from './app/FavoriteScreen/FavoriteScreen';

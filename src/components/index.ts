@@ -7,3 +7,4 @@ export * from './Button/Button';
 export * from './Screen';
 export * from './Form/FormTextInput';
 export * from './Form/FormPasswordInput';
+export * from './TouchableOpacityBox';

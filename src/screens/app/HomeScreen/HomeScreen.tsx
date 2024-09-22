@@ -2,15 +2,21 @@ import React from 'react';
 
 import {Box, Button, Text} from '@components';
 
-import {AppScreenProps} from '@/routes/navigationTypes';
+import {AppScreenBottomTabProps} from '@/routes/navigationTypes';
 
-type HomeScreenProps = AppScreenProps<'HomeScreen'>;
+type HomeScreenProps = AppScreenBottomTabProps<'HomeScreen'>;
 
-export function HomeScreen({}: HomeScreenProps) {
+export function HomeScreen({navigation}: HomeScreenProps) {
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
       <Text type="headingLarge">Home Screen</Text>
-      <Button text="button" type="primary" onPress={() => {}} />
+      <Button
+        text="button"
+        type="primary"
+        onPress={() => {
+          navigation.navigate('MyProfileScreen');
+        }}
+      />
     </Box>
   );
 }

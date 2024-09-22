@@ -6,7 +6,7 @@ import {AppStackRoutes} from './AppStack';
 import {AuthStackRoutes} from './AuthStack';
 
 export default function Routes() {
-  const isAuthorized = false;
+  const isAuthorized = true;
 
   return (
     <NavigationContainer>
